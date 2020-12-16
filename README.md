@@ -22,6 +22,10 @@ Here are the tasks that we need to figure out
 - [ ] Platform
 - [ ] Traps/Obstacles
 - [ ] Surrounding environment
+- [ ] Sound effects
+- [ ] Ambiant sound
+- [ ] Font
+- [ ] UI assets
 
 ### Godot
 
