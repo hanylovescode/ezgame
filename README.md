@@ -13,7 +13,7 @@ Here are the tasks that we need to figure out
 ### Github
 
 - [X] Create a repo
-- [ ] Allow multiple contributers
+- [X] Allow multiple contributers
 - [ ] Resolve code conflicts
 
 ### Game Assets
