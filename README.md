@@ -7,6 +7,8 @@ teamwork.
 
 [] implement player controls
 [] implement animations
+[] implement gravity
+[] implement collisions
 [] build level using json
 [] ...
 
