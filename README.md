@@ -1,37 +1,15 @@
 # EZgame
 
-We are trying to build a game using Godot Engine. To practice programming and
+We are trying to build a game using python and pygame. To practice programming and
 teamwork.
-
-There's nothing here yet, just a will (OMEGALUL).
-
 
 ## Roadmap
 
-Here are the tasks that we need to figure out
+[] implement player controls
+[] implement animations
+[] build level using json
+[] ...
 
-### Github
-
-- [X] Create a repo
-- [X] Allow multiple contributers
-- [ ] Resolve code conflicts
-
-### Game Assets
-
-- [ ] Player (animated and multiple directions)
-- [ ] Platform
-- [ ] Traps/Obstacles
-- [ ] Surrounding environment
-- [ ] Sound effects
-- [ ] Ambiant sound
-- [ ] Font
-- [ ] UI assets
-
-### Godot
-
-- [ ] Understand ECS
-- [ ] Know how to implement it in Godot
-- [ ] ... (will update later)
 
 ## License
 
