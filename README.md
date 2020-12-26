@@ -5,13 +5,13 @@ teamwork.
 
 ## Roadmap
 
-[x] basic structure
-[x] implement player controls
-[ ] implement animations
-[ ] implement gravity
-[ ] implement collisions
-[ ] build level using json
-[ ] ...
+- [x] basic structure
+- [x] implement player controls
+- [ ] implement animations
+- [ ] implement gravity
+- [ ] implement collisions
+- [ ] build level using json
+- [ ] ...
 
 
 ## License
