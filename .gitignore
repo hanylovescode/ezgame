@@ -1,2 +1,8 @@
 # for small tests
-./scratch
+scratch
+# python venv
+.venv
+# vscode config
+.vscode
+# pycharm config
+.idea
