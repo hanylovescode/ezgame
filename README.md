@@ -5,14 +5,29 @@ teamwork.
 
 ## Roadmap
 
-- [x] basic structure
-- [x] implement player controls
-- [ ] implement animations
-- [ ] implement gravity
-- [ ] implement collisions
-- [ ] build level using json
+- [x] Basic structure
+- [x] Implement player controls
+- [ ] Implement animations
+- [ ] Implement gravity
+- [ ] Implement collisions
+- [ ] Build level using json
+- [ ] Sound effects
+- [ ] Background music
 - [ ] ...
 
+## Credits
+
+- Sprites
+  - They are done by [o-lobster](https://o-lobster.itch.io/),
+  you can find the sprites [here](https://o-lobster.itch.io/platformmetroidvania-pixel-art-asset-pack).
+    
+
+- Sound Effects
+  - None
+  
+
+- Background Music
+  - None
 
 ## License
 
