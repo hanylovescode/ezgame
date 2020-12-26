@@ -32,8 +32,12 @@ class Level:
 
         self.game_gui = GUI(self.levelloader.fonts[0])
 
-        # TODO: initialize player using list of images
-        # self.player = Player()
+        player_images = [
+            pygame.image.load('assets/images/player_default.png').convert_alpha(),
+            pygame.image.load('assets/images/player_default_l.png').convert_alpha(),
+            pygame.image.load('assets/images/player_default_r.png').convert_alpha()
+        ]
+        self.player = Player(player_images)
 
         # TODO: initialize environment
         # self.walls =
@@ -56,8 +60,7 @@ class Level:
         # )
         self.game_surface.fill((0, 0, 0))
 
-        # TODO: update the player
-        # self.player.update(self.game_surface, self.game_clock.deltatime)
+        self.player.update(self.game_surface, self.game_clock.deltatime)
 
         self.game_gui.update(self.game_surface, self.settings.show_fps, self.game_clock.fps)
 

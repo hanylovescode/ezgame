@@ -6,3 +6,5 @@ scratch
 .vscode
 # pycharm config
 .idea
+# python garbage
+src/__pycache__
