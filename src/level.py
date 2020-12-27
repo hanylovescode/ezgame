@@ -37,7 +37,7 @@ class Level:
         self.game_gui = GUI(self.levelloader.get_fonts())
 
         player_images = self.levelloader.get_player_images()
-        self.player = Player(player_images)
+        self.player = Player(player_images, self.level_map.player_start_pos)
 
         # TODO: initialize environment
         # self.walls =

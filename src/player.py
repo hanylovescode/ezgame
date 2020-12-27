@@ -6,10 +6,10 @@ import logging
 class Player:
     logger = logging.getLogger("Player")
 
-    def __init__(self, player_images: list[pygame.Surface]):
+    def __init__(self, player_images: list[pygame.Surface], starting_pos: tuple[int, int]):
         self.player_images = player_images
         self.rect = player_images[0].get_rect()
-        self.rect.y = 350
+        self.rect.x, self.rect.y = starting_pos
         self.jumping = False
         self.falling = False
         self.is_moving_right = False
@@ -36,11 +36,11 @@ class Player:
 
     def __redraw(self, game_surface: pygame.Surface):
         if self.is_moving_right:
-            game_surface.blit(self.player_images[2], self.rect)
-        elif self.is_moving_left:
-            game_surface.blit(self.player_images[1], self.rect)
-        else:
             game_surface.blit(self.player_images[0], self.rect)
+        elif self.is_moving_left:
+            game_surface.blit(self.player_images[2], self.rect)
+        else:
+            game_surface.blit(self.player_images[1], self.rect)
 
     def __jump(self):
         if self.jumping is False:
