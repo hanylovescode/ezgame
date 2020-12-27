@@ -18,7 +18,11 @@ class Level:
             # pygame.HWSURFACE  # it solves flickering
         )
 
-        self.levelloader = LevelLoader()
+        self.levelloader = LevelLoader(1)
+        self.level_map = self.levelloader.get_level_map()
+        # TODO: read player position from TileMap
+        # self.level_map.start_x
+        # self.level_map.start_y
 
         pygame.display.set_caption(self.settings.game_title)
         # TODO: get an icon
@@ -30,14 +34,9 @@ class Level:
 
         self.game_clock = GameClock()
 
-        self.game_gui = GUI(self.levelloader.fonts[0])
+        self.game_gui = GUI(self.levelloader.get_fonts())
 
-        # TODO: use the new spirits located in assets/images/herochar sprites
-        player_images = [
-            pygame.image.load('assets/images/player_default.png').convert_alpha(),
-            pygame.image.load('assets/images/player_default_l.png').convert_alpha(),
-            pygame.image.load('assets/images/player_default_r.png').convert_alpha()
-        ]
+        player_images = self.levelloader.get_player_images()
         self.player = Player(player_images)
 
         # TODO: initialize environment
@@ -55,11 +54,10 @@ class Level:
             return
 
         # TODO: get a background image
-        # self.game_surface.blit(
-        #     self.background_image,
-        #     (0, 0)
-        # )
         self.game_surface.fill((0, 0, 0))
+        # self.game_surface.fill((34, 31, 49))
+
+        self.level_map.update(self.game_surface)
 
         self.player.update(self.game_surface, self.game_clock.deltatime)
 

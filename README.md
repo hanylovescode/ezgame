@@ -6,11 +6,11 @@ teamwork.
 ## Roadmap
 
 - [x] Basic structure
-- [x] Implement player controls
-- [ ] Implement animations
-- [ ] Implement gravity
-- [ ] Implement collisions
-- [ ] Build level using json
+- [x] Basic player controls (left,right)
+- [x] Basic reading of CSV level map
+- [ ] Animations
+- [ ] Gravity
+- [ ] Collisions
 - [ ] Sound effects
 - [ ] Background music
 - [ ] ...
