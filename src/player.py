@@ -2,6 +2,7 @@ import pygame
 import logging
 
 
+# TODO: use the new spirits located in assets/images/herochar sprites
 class Player:
     logger = logging.getLogger("Player")
 

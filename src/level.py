@@ -32,6 +32,7 @@ class Level:
 
         self.game_gui = GUI(self.levelloader.fonts[0])
 
+        # TODO: use the new spirits located in assets/images/herochar sprites
         player_images = [
             pygame.image.load('assets/images/player_default.png').convert_alpha(),
             pygame.image.load('assets/images/player_default_l.png').convert_alpha(),
