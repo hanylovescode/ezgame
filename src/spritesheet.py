@@ -26,11 +26,9 @@ class SpriteSheet:
         columns = self.__rect.w // self.__sprite_width
         rows = self.__rect.h // self.__sprite_height
 
-        counter = 0
         for r in range(rows):
             for c in range(columns):
                 sprites.append(self.__get_sprite(c * self.__sprite_width, r * self.__sprite_height))
-                counter += 1
         return sprites
 
     def get_sprite_by_id(self, sprite_id: int) -> pygame.Surface:
