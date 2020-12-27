@@ -1,0 +1,13 @@
+{
+  "player": {
+    "filepath": "images/temp_hero.png",
+    "tile_size": [16,16],
+    "render_tile_size": [32,32]
+  },
+  "tiles": {
+    "filepath": "images/tiles_and_background_foreground/tileset_small.png",
+    "tile_size": [16,16],
+    "render_tile_size": [32,32],
+    "player_tile_id": 35
+  }
+}
