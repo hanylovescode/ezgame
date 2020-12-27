@@ -11,7 +11,8 @@ teamwork.
 - [ ] Animations
 - [ ] Gravity
 - [ ] Collisions
-- [ ] Traps/Doors/Boxes
+- [ ] Logic for Traps/Doors/Boxes
+- [ ] Camera movements
 - [ ] GUI
 - [ ] Sound effects
 - [ ] Background music
