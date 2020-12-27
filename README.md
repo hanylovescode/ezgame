@@ -11,6 +11,8 @@ teamwork.
 - [ ] Animations
 - [ ] Gravity
 - [ ] Collisions
+- [ ] Traps/Doors/Boxes
+- [ ] GUI
 - [ ] Sound effects
 - [ ] Background music
 - [ ] ...
