@@ -23,14 +23,14 @@ teamwork.
     
 
 - Sound Effects
-  - None
+  - None.
   
 
 - Background Music
-  - None
+  - None.
   
 - Tools
-  - [Tiled](https://www.mapeditor.org/)
+  - [Tiled](https://www.mapeditor.org/) for level design.
 
 ## License
 
