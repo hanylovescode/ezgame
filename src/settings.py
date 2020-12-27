@@ -7,7 +7,7 @@ class Settings:
 
     def __init__(self):
         self.game_title: str = "EZgame"
-        self.screen_size = 800, 600
+        self.screen_size = 1280, 720
 
         self.is_game_paused = False
         self.show_fps = True
