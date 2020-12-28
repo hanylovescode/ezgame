@@ -1,43 +1,25 @@
-import pygame
+import json
 import logging
+import pygame
 
 from settings import Settings
-from levelloader import LevelLoader
 from gameclock import GameClock
-from gui import GUI
 from player import Player
+from spritesheet import SpriteSheet
+from tile import TileMap
 
 
 class Level:
     logger = logging.getLogger("Level")
 
-    def __init__(self):
-        self.settings = Settings()
-        self.game_surface = pygame.display.set_mode(
-            self.settings.screen_size,
-            # pygame.HWSURFACE  # it solves flickering
-        )
+    def __init__(self, level_id: int, settings: Settings, game_clock: GameClock):
+        self.settings = settings
+        self.game_clock = game_clock
 
-        self.levelloader = LevelLoader(1)
-        self.level_map = self.levelloader.get_level_map()
-        # TODO: read player position from TileMap
-        # self.level_map.start_x
-        # self.level_map.start_y
+        level_loader = LevelLoader(level_id)
+        self.level_map = level_loader.get_level_map()
 
-        pygame.display.set_caption(self.settings.game_title)
-        # TODO: get an icon
-        # icon = self.levelloader.images['icon']
-        # pygame.display.set_icon(icon)
-
-        # TODO: get a background image
-        # self.background_image = self.levelloader.images['background']
-
-        self.game_clock = GameClock()
-
-        self.game_gui = GUI(self.levelloader.get_fonts())
-
-        player_images = self.levelloader.get_player_images()
-        self.player = Player(player_images, self.level_map.player_start_pos)
+        self.player = Player(level_loader.get_player_images(), self.level_map.player_start_pos)
 
         # TODO: initialize environment
         # self.walls =
@@ -45,49 +27,57 @@ class Level:
         # self.ladders =
         # ....
 
-        self.game_is_running = True
-
-    def __update(self):
+    def update(self):
         self.game_clock.update(self.settings.fps)
 
-        if self.settings.is_game_paused:
-            return
+        game_surface = pygame.display.get_surface()
+        game_surface.fill(self.settings.background_color)
 
-        # TODO: get a background image
-        self.game_surface.fill((0, 0, 0))
-        # self.game_surface.fill((34, 31, 49))
+        self.level_map.update(game_surface)
+        self.player.update(game_surface, self.game_clock.deltatime)
 
-        self.level_map.update(self.game_surface)
 
-        self.player.update(self.game_surface, self.game_clock.deltatime)
+class LevelLoader:
+    logger = logging.getLogger("LevelLoader")
 
-        self.game_gui.update(self.game_surface, self.settings.show_fps, self.game_clock.fps)
+    def __init__(self, level_id: int):
+        self.__level_id = level_id
+        self.__assets_file = self.__load_assets_file()
 
-        pygame.display.flip()
+        self.__player_spritesheet = self.__load_spritesheet('player')
+        self.__player_images = self.__player_spritesheet.sprites
+        self.__level_spritesheet = self.__load_spritesheet('tiles')
+        self.__level_map = self.__load_level_map()
+        self.__sounds = self.__load_sounds()
 
-    def __catch_events(self):
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                self.logger.warning('Game was forced to close!')
-                self.game_is_running = False
+    def __load_assets_file(self):
+        assets_file_path = f'assets/levels/L{self.__level_id}/assets.json'
+        with open(assets_file_path, 'r') as f:
+            data = f.read()
+        self.logger.info('Assets file is loaded')
+        return json.loads(data)
 
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    self.game_is_running = False
-                    self.logger.info('Game closed.')
+    def __load_spritesheet(self, object_name: str):
+        # ss_obj stands for spritesheet json object
+        ss_obj = self.__assets_file[object_name]
+        ss_filepath = f'assets/{ss_obj["filepath"]}'
+        ss_tile_size = ss_obj['tile_size']
+        ss_render_tile_size = ss_obj['render_tile_size']
+        return SpriteSheet(ss_filepath, ss_tile_size, ss_render_tile_size)
 
-                if event.key == pygame.K_HOME:
-                    self.settings.fps = 60
-                if event.key == pygame.K_END:
-                    self.settings.fps = 120
-                if event.key == pygame.K_BACKQUOTE:
-                    self.settings.toggle_show_fps()
+    def __load_level_map(self):
+        level_map_path = f'assets/levels/L{self.__level_id}/map.csv'
+        player_tile_id = self.__assets_file['tiles']['player_tile_id']
+        render_tile_size = self.__assets_file['tiles']['render_tile_size']
+        return TileMap(level_map_path, self.__level_spritesheet, render_tile_size, player_tile_id)
 
-                if event.key == pygame.K_p:
-                    self.settings.toggle_game_pause()
+    def __load_sounds(self):
+        # TODO: load sounds
+        # self.logger.info("Sounds are loaded")
+        return []
 
-    def run(self):
-        self.logger.info('Game started running ...')
-        while self.game_is_running:
-            self.__catch_events()
-            self.__update()
+    def get_player_images(self):
+        return self.__player_images
+
+    def get_level_map(self):
+        return self.__level_map
