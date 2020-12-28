@@ -13,6 +13,7 @@ teamwork.
 - [ ] Collisions
 - [ ] Logic for Traps/Doors/Boxes
 - [ ] Camera movements
+- [ ] Scene manager
 - [ ] GUI
 - [ ] Sound effects
 - [ ] Background music
