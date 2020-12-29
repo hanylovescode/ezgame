@@ -3,7 +3,7 @@ import pygame
 
 class SpriteSheet:
     """
-    This class takes an sprite sheet image and convert it to sprites
+    This class takes a sprite sheet image and convert it to sprites
     Later on, we can retrieve the specific sprite by id
     """
 
