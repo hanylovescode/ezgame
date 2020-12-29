@@ -11,6 +11,7 @@ class Player:
         self.rect = player_images[0].get_rect()
         self.rect.x, self.rect.y = starting_pos
 
+        self.image = pygame.Surface((0, 0))
         self.player_idle_images = self.player_images[:4]
         self.player_walking_images = self.player_images[4:]
 
@@ -24,8 +25,6 @@ class Player:
         self.index =0
         self.animation_time = 0.1
         self.current_time = 0
-
-
 
     def __catch_keystrokes(self, deltatime: float):
         keys = pygame.key.get_pressed()
