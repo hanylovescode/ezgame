@@ -4,7 +4,7 @@ import pygame
 
 from src.gameclock import GameClock
 from src.vector import Vector
-from src.walker import Walker
+from experiments.walker import Walker
 
 
 class Scratch:
