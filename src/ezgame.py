@@ -1,22 +1,11 @@
-"""
-A 2D puzzle game
-----------------
-optional command line args:
-    [-l, -log] {'debug', 'info', 'warning', 'error', 'critical'}
-            change logging level    -> default: 'warning'
-    [-p, -profile] PROFILE
-        using cProfile and output the result into 3 different files
-            p_[PROFILE]_output.prof -> cProfile output
-            p_[PROFILE]_time.txt    -> sorted by time
-            p_[PROFILE]_calls.txt   -> sorted by calls
-"""
+import logging
+
 import pygame
 
-from helper import *
-from settings import Settings
-from gameclock import GameClock
-from gui import GUI
-from level import Level
+from .settings import Settings
+from .gameclock import GameClock
+from .gui import GUI
+from .level import Level
 
 
 class EzGame:
@@ -81,19 +70,3 @@ class EzGame:
             self.current_level.update()
             self.game_gui.update(self.settings.show_fps, self.game_clock.fps)
             pygame.display.flip()
-
-
-if __name__ == '__main__':
-    args = parse_cl_args()
-
-    logging.basicConfig(
-        format='%(name)13s %(levelname)7s: %(message)s',
-        level=getattr(logging, args.loglevel.upper())
-    )
-    logger = logging.getLogger('Main')
-    logger.info('Starting the game ...')
-
-    if not args.profile:
-        EzGame()
-    else:
-        profile_game(args.profile)

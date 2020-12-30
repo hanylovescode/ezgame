@@ -1,12 +1,13 @@
 import json
 import logging
+
 import pygame
 
-from settings import Settings
-from gameclock import GameClock
-from player import Player
-from spritesheet import SpriteSheet
-from tile import TileMap
+from .settings import Settings
+from .gameclock import GameClock
+from .player import Player
+from .spritesheet import SpriteSheet
+from .tile import TileMap
 
 
 class Level:

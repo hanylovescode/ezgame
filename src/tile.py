@@ -2,10 +2,11 @@
 This file works on reading a CSV level map and convert it into tiles
 """
 import csv
-import pygame
 import logging
 
-from spritesheet import SpriteSheet
+import pygame
+
+from .spritesheet import SpriteSheet
 
 
 class Tile(pygame.sprite.Sprite):
