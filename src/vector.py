@@ -1,5 +1,4 @@
 import logging
-from functools import singledispatchmethod
 from random import randint
 import math
 
@@ -15,18 +14,10 @@ class Vector:
     """
     logger = logging.getLogger('Vector')
 
-    @singledispatchmethod
-    def __init__(self, x: float, y: float):
+    def __init__(self, x: float = 0, y: float = 0):
         self.x = x
         self.y = y
         self.logger.info(f'init -> Vector({x},{y})')
-
-    # Don't use this, i am just testing
-    @__init__.register
-    def _(self, a: tuple):
-        self.x = a[0]
-        self.y = a[1]
-        self.logger.warning('This method is just for testing')
 
     @classmethod
     def from_tuple(cls, input_tuple: tuple[float, float]):
@@ -37,14 +28,6 @@ class Vector:
     def create_from_random(cls, rand_min: int, rand_max: int):
         """Initialize a new Vector with a random x and y values"""
         return cls(randint(rand_min, rand_max), randint(rand_min, rand_max))
-
-    # TODO: change the method name!
-    @staticmethod
-    def create_from_random_with_specific_magnitude(cls, rand_bound: int, magnitude: float):
-        """Initialize a new Vector with a random x and y values"""
-        x = randint(-rand_bound, rand_bound) * magnitude
-        y = randint(-rand_bound, rand_bound) * magnitude
-        return cls(x, y)
 
     def randomize_values(self, rand_bound: int, magnitude: float):
         """Changes the current Vector to random values"""
@@ -138,6 +121,10 @@ class Vector:
             self.y = bound
         elif self.y < -bound:
             self.y = -bound
+
+    def set(self, x: float, y: float):
+        self.x = x
+        self.y = y
 
     @staticmethod
     def distance(vector_a, vector_b) -> float:
