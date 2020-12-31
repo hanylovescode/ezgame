@@ -1,5 +1,3 @@
-import logging
-
 import pygame
 import logging
 
@@ -7,15 +5,15 @@ import logging
 class Player:
     logger = logging.getLogger("Player")
 
-    def __init__(self,player_images: list[pygame.Surface], starting_pos: tuple[int, int]):
+    def __init__(self, player_images: list[pygame.Surface], starting_pos: tuple[int, int]):
 
         self.player_images = player_images
-        self.rect = player_images[0].get_rect()
+        self.rect = player_images['idle'][0].get_rect()
         self.rect.x, self.rect.y = starting_pos
 
+        self.player_idle_images = self.player_images['idle']
+        self.player_walking_images = self.player_images['walking_right']
         self.image = pygame.Surface((0, 0))
-        self.player_idle_images = self.player_images[:4]
-        self.player_walking_images = self.player_images[4:]
 
         self.jumping = False
         self.falling = False
@@ -24,7 +22,7 @@ class Player:
         self.is_moving_left = False
         self.move = [0, 0]
 
-        self.index =0
+        self.index = 0
         self.animation_time = 0.1
         self.current_time = 0
 
@@ -47,31 +45,27 @@ class Player:
             self.__jump()
 
     def __redraw(self, game_surface: pygame.Surface, deltatime: float):
-        # I need to call the list walkCount
         if self.is_moving_right:
-            self.current_time += deltatime/100
+            self.current_time += deltatime / 100
             if self.current_time >= self.animation_time:
                 self.current_time = 0
                 self.index = (self.index + 1) % len(self.player_walking_images)
                 self.image = self.player_walking_images[self.index]
-            game_surface.blit(self.image, self.rect) 
+            game_surface.blit(self.image, self.rect)
         elif self.is_moving_left:
-            #  here will be the walking left images list
-            self.current_time += deltatime/100
+            self.current_time += deltatime / 100
             if self.current_time >= self.animation_time:
                 self.current_time = 0
                 self.index = (self.index + 1) % len(self.player_walking_images)
                 self.image = self.player_walking_images[self.index]
             game_surface.blit(pygame.transform.flip(self.image, True, False), self.rect)
-            # game_surface.blit(self.player_walking_images[0], self.rect)
         else:
-            self.current_time += deltatime/100
+            self.current_time += deltatime / 100
             if self.current_time >= self.animation_time:
                 self.current_time = 0
                 self.index = (self.index + 1) % len(self.player_idle_images)
                 self.image = self.player_idle_images[self.index]
             game_surface.blit(self.image, self.rect)
-            
 
     def __jump(self):
         if self.jumping is False:
@@ -90,10 +84,7 @@ class Player:
             self.move[1] = 0
         self.rect.move_ip(self.move[0], self.move[1])
 
-
     def update(self, game_surface: pygame.Surface, deltatime: float):
         self.__catch_keystrokes(deltatime)
         self.__move(deltatime)
-        self.__redraw(game_surface,deltatime)
-        
-
+        self.__redraw(game_surface, deltatime)

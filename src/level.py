@@ -51,17 +51,14 @@ class LevelLoader:
         self.__player_right_spritesheet = self.__load_spritesheet('player_walking_right')
         self.__player_walking_right_images = self.__player_right_spritesheet.sprites
 
-
         self.__player_images = {
-        "idle": self.__player_idle_images,
-        "walking_right": self.__player_walking_right_images,
-                }
+            "idle": self.__player_idle_images,
+            "walking_right": self.__player_walking_right_images,
+        }
 
-        self.joine_list = self.__player_idle_images + self.__player_walking_right_images
         self.__level_spritesheet = self.__load_spritesheet('tiles')
         self.__level_map = self.__load_level_map()
         self.__sounds = self.__load_sounds()
-
 
     def __load_assets_file(self):
         assets_file_path = f'assets/levels/L{self.__level_id}/assets.json'
@@ -95,7 +92,7 @@ class LevelLoader:
         return []
 
     def get_player_images(self):
-        return self.joine_list
+        return self.__player_images
 
     def get_level_map(self):
         return self.__level_map
