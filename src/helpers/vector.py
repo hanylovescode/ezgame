@@ -10,7 +10,7 @@ import math
 
 class Vector:
     """
-    Implementation of a 2D Euclidean Vector and its functions.
+    Implementation of a 2D Euclidean Vector and its methods.
     """
     logger = logging.getLogger('Vector')
 

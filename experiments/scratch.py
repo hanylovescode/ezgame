@@ -4,7 +4,7 @@ from enum import IntFlag, auto
 import pygame
 
 from src.gameclock import GameClock
-from src.vector import Vector
+from src.helpers.vector import Vector
 from experiments.walker import Walker
 
 
@@ -75,11 +75,12 @@ class Scratch:
 
         if keys[pygame.K_d] or keys[pygame.K_RIGHT]:
             self.walker.apply_force(self.__moving_right_force)
-            # TODO: learn how to combine the two lines below
+            # self.state = (self.state | State.MOVING | State.FACING_RIGHT) & ~State.FACING_LEFT
             self.state |= State.MOVING | State.FACING_RIGHT
             self.state &= ~State.FACING_LEFT
         elif keys[pygame.K_a] or keys[pygame.K_LEFT]:
             self.walker.apply_force(self.__moving_left_force)
+            # self.state = (self.state | State.MOVING | State.FACING_LEFT) & ~State.FACING_RIGHT
             self.state |= State.MOVING | State.FACING_LEFT
             self.state &= ~State.FACING_RIGHT
         else:

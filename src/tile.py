@@ -6,7 +6,7 @@ import logging
 
 import pygame
 
-from .spritesheet import SpriteSheet
+from src.spritesheet import SpriteSheet
 
 
 class Tile(pygame.sprite.Sprite):

@@ -2,7 +2,7 @@ import logging
 
 import pygame
 
-from src.vector import Vector
+from src.helpers.vector import Vector
 
 
 class Walker:

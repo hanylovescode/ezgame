@@ -2,10 +2,10 @@ import logging
 
 import pygame
 
-from .settings import Settings
-from .gameclock import GameClock
-from .gui import GUI
-from .level import Level
+from src.settings import Settings
+from src.gameclock import GameClock
+from src.gui import GUI
+from src.level import Level
 
 
 class EzGame:

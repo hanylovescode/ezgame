@@ -3,11 +3,11 @@ import logging
 
 import pygame
 
-from .settings import Settings
-from .gameclock import GameClock
-from .player import Player
-from .spritesheet import SpriteSheet
-from .tile import TileMap
+from src.settings import Settings
+from src.gameclock import GameClock
+from src.player import Player
+from src.spritesheet import SpriteSheet
+from src.tile import TileMap
 
 
 class Level:
