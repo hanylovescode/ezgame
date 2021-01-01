@@ -1,7 +1,6 @@
 # EZGame
 
-We are trying to build a game using python and pygame. To practice programming and
-teamwork.
+2D puzzle game (still work in progress).
 
 ## Roadmap
 
@@ -25,11 +24,9 @@ teamwork.
   - They are done by [o-lobster](https://o-lobster.itch.io/),
   you can find the sprites [here](https://o-lobster.itch.io/platformmetroidvania-pixel-art-asset-pack).
     
-
 - Sound Effects
   - None.
   
-
 - Background Music
   - None.
   
@@ -38,4 +35,4 @@ teamwork.
 
 ## License
 
-None.
+[MIT License](https://github.com/m5tfi/ezgame/blob/main/LICENSE)
