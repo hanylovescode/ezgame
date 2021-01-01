@@ -1,4 +1,4 @@
-# EZgame
+# EZGame
 
 We are trying to build a game using python and pygame. To practice programming and
 teamwork.
@@ -8,7 +8,7 @@ teamwork.
 - [x] Basic structure
 - [x] Basic player controls (left,right)
 - [x] Basic reading of CSV level map
-- [ ] Animations
+- [x] Animations
 - [ ] Gravity
 - [ ] Collisions
 - [ ] Logic for Traps/Doors/Boxes
