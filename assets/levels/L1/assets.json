@@ -4,8 +4,8 @@
     "tile_size": [16,16],
     "render_tile_size": [32,32]
   },
-  "player_walking_right": {
-    "filepath": "images/herochar_sprites/herochar_pushing_foward_anim_strip_6.png",
+  "player_running": {
+    "filepath": "images/herochar_sprites/herochar_run_anim_strip_6.png",
     "tile_size": [16,16],
     "render_tile_size": [32,32]
   },

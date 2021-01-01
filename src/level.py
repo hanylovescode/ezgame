@@ -5,6 +5,7 @@ import pygame
 
 from src.settings import Settings
 from src.gameclock import GameClock
+from src.helpers.vector import Vector
 from src.player import Player
 from src.spritesheet import SpriteSheet
 from src.tile import TileMap
@@ -20,7 +21,10 @@ class Level:
         level_loader = LevelLoader(level_id)
         self.level_map = level_loader.get_level_map()
 
-        self.player = Player(level_loader.get_player_images(), self.level_map.player_start_pos)
+        self.gravity = Vector(0, 1)
+
+        player_start_pos = Vector.from_tuple(self.level_map.player_start_pos)
+        self.player = Player(level_loader.get_player_images(), player_start_pos)
 
         # TODO: initialize environment
         # self.walls =
@@ -35,6 +39,7 @@ class Level:
         game_surface.fill(self.settings.background_color)
 
         self.level_map.update(game_surface)
+        self.player.apply_force(self.gravity)
         self.player.update(game_surface, self.game_clock.deltatime)
 
 
@@ -48,12 +53,12 @@ class LevelLoader:
         self.__player_spritesheet = self.__load_spritesheet('player_idle')
         self.__player_idle_images = self.__player_spritesheet.sprites
 
-        self.__player_right_spritesheet = self.__load_spritesheet('player_walking_right')
-        self.__player_walking_right_images = self.__player_right_spritesheet.sprites
+        self.__player_walking_spritesheet = self.__load_spritesheet('player_running')
+        self.__player_walking_images = self.__player_walking_spritesheet.sprites
 
         self.__player_images = {
-            "idle": self.__player_idle_images,
-            "walking_right": self.__player_walking_right_images,
+            "idle"   : self.__player_idle_images,
+            "running": self.__player_walking_images,
         }
 
         self.__level_spritesheet = self.__load_spritesheet('tiles')
@@ -70,9 +75,7 @@ class LevelLoader:
         return json.loads(data)
 
     def __load_spritesheet(self, object_name: str):
-        # ss_obj stands for spritesheet json object
         ss_obj = self.__assets_file[object_name]
-        # this determines the filepath
         ss_filepath = f'assets/{ss_obj["filepath"]}'
 
         ss_tile_size = ss_obj['tile_size']
