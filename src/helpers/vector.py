@@ -29,10 +29,20 @@ class Vector:
         """Initialize a new Vector with a random x and y values"""
         return cls(randint(rand_min, rand_max), randint(rand_min, rand_max))
 
+    def copy(self):
+        """Returns a new instance with the current Vector values"""
+        return Vector(self.x, self.y)
+
     def randomize_values(self, rand_bound: int, magnitude: float):
         """Changes the current Vector to random values"""
         self.x = randint(-rand_bound, rand_bound) * magnitude
         self.y = randint(-rand_bound, rand_bound) * magnitude
+
+    def __eq__(self, other_vector):
+        """Overriding == operator"""
+        if not other_vector:
+            return False
+        return self.x == other_vector.x and self.y == other_vector.y
 
     def __str__(self):
         """Overriding the __str__ method; for debugging"""
