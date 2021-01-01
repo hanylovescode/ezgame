@@ -9,19 +9,19 @@ class Walker:
     """A class that has the ability to be affected by forces"""
     logger = logging.getLogger('Player')
 
-    def __init__(self, position: Vector, velocity: Vector = Vector(), mass: float = 1):
+    def __init__(self, image: pygame.Surface, position: Vector, velocity: Vector = Vector(), mass: float = 1):
         self.position = position
         self.velocity = velocity
         self.acceleration = Vector()
         self.mass = mass
         self.velocity_limit = None
-        self.image = pygame.image.load('assets/images/icon.png')
+        self.image = image
         self.logger.info(f'init -> Walker -> pos={self.position}, vel={self.velocity}, mass={self.mass}')
 
     @classmethod
-    def from_floats(cls, pos_x: float, pos_y: float, mass: float = 1):
+    def from_floats(cls, image: pygame.Surface, pos_x: float, pos_y: float, mass: float = 1):
         """Alternative method to initialize an instance"""
-        return cls(Vector(pos_x, pos_y), mass=mass)
+        return cls(image, Vector(pos_x, pos_y), mass=mass)
 
     @property
     def mass(self) -> float:
@@ -49,7 +49,8 @@ class Walker:
         for f in forces:
             self.apply_force(f)
 
-    def update(self):
+    def update(self, deltatime: float):
+        # TODO: implement deltatime
         self.velocity.add(self.acceleration)
         if self.velocity_limit:
             self.velocity.limit(self.velocity_limit)
