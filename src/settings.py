@@ -7,7 +7,7 @@ class Settings:
     logger = logging.getLogger("Settings")
 
     def __init__(self):
-        self.game_title: str = "EZgame"
+        self.game_title: str = "EZGame"
         self.screen_size = 1280, 720
         # self.background_color = (0, 0, 0)
         self.background_color = (34, 31, 49)  # Not sure if black was better
