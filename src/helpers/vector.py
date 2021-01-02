@@ -44,9 +44,13 @@ class Vector:
             return False
         return self.x == other_vector.x and self.y == other_vector.y
 
+    def __repr__(self):
+        """Overriding the __repr__ method; for debugging"""
+        return f'Vector({self.x}, {self.y})'
+
     def __str__(self):
         """Overriding the __str__ method; for debugging"""
-        return f'Vector({self.x}, {self.y})'
+        return f'({self.x}, {self.y})'
 
     # Don't use this method, It's just for testing
     def __getitem__(self, i: int) -> float:
