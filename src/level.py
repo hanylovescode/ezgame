@@ -21,7 +21,7 @@ class Level:
         level_loader = LevelLoader(level_id)
         self.level_map = level_loader.get_level_map()
 
-        self.gravity = Vector(0, 1)
+        self.gravity = Vector(0, 0.1)
 
         player_start_pos = Vector.from_tuple(self.level_map.player_start_pos)
         self.player = Player(level_loader.get_player_images(), player_start_pos)

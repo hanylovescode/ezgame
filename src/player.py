@@ -22,7 +22,7 @@ class Player(Walker):
     def __init__(self, images: dict[str, list[pygame.Surface]], position: Vector):
         Walker.__init__(self, images, position)
         self.state = State.FACING_RIGHT
-        self.jump_force = Vector(0, -8)
+        self.jump_force = Vector(0, -3.8)
         self.__moving_right_force = Vector()
         self.__moving_left_force = Vector()
         self.moving_magnitude = 0.1
