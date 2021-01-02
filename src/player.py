@@ -58,7 +58,7 @@ class Player(Walker):
             self.state &= ~State.FACING_LEFT
         else:
             self.state &= ~State.RUNNING
-            self.velocity.x = 0
+            self.velocity.x = 0  # TODO: that's a bad fix and i should replace it!
 
         if State.JUMPING not in self.state:
             if keys[pygame.K_UP] or keys[pygame.K_w]:
