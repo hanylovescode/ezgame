@@ -69,6 +69,10 @@ class Player(Walker):
         # TODO: check if there is a better way to implement images_key
         if State.RUNNING in self.state:
             self.images_key = 'running'
+        # jumping state
+        elif State.JUMPING in self.state:
+            # animating jumping is very slow ie: changing images when jumping
+            self.images_key = 'jumping'
         else:  # Idle state
             self.images_key = 'idle'
         super()._redraw(game_surface, deltatime, flip)

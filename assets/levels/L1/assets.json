@@ -9,6 +9,11 @@
     "tile_size": [16,16],
     "render_tile_size": [32,32]
   },
+  "player_jumping": {
+    "filepath": "images/herochar_sprites/herochar_jump_up_anim_strip_3.png",
+    "tile_size": [16,16],
+    "render_tile_size": [32,32]
+  },
   "tiles": {
     "filepath": "images/tiles_and_background_foreground/tileset_small.png",
     "tile_size": [16,16],

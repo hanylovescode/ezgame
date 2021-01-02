@@ -56,9 +56,13 @@ class LevelLoader:
         self.__player_walking_spritesheet = self.__load_spritesheet('player_running')
         self.__player_walking_images = self.__player_walking_spritesheet.sprites
 
+        self.__player_jumping_spritesheet = self.__load_spritesheet('player_jumping')
+        self.__player_jumping_images = self.__player_jumping_spritesheet.sprites
+
         self.__player_images = {
             "idle"   : self.__player_idle_images,
             "running": self.__player_walking_images,
+            "jumping": self.__player_jumping_images,
         }
 
         self.__level_spritesheet = self.__load_spritesheet('tiles')
